@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mount Crumpit &amp; Whoville Weather Watch</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
 
+  <main class="container">
+    <!-- GRINCH-THEMED LIVE WEATHER WIDGET -->
+    <section id="weather-widget" class="weather-card grinch-clear" aria-labelledby="city-heading">
+      <!-- Dynamic Snowflakes & Rain Drops Container -->
+      <div id="weather-particles" class="weather-particles" aria-hidden="true"></div>
+
+      <p class="grinch-banner">🎄 Mount Crumpit &amp; Whoville Forecast Center 🎄</p>
+
+      <!-- City Search Bar -->
+      <form id="city-search-form" class="search-bar" role="search" aria-label="Search city weather">
+        <label for="city-input" class="visually-hidden">Search city</label>
+        <input
+          type="text"
+          id="city-input"
+          placeholder="Spy on any town's weather (e.g., New Castle, North Pole, London)..."
+          aria-describedby="search-feedback"
+        />
+        <button type="submit">Spy Weather</button>
+      </form>
+      <p id="search-feedback" class="search-feedback" role="status" aria-live="polite"></p>
+
+      <!-- Current Weather Header -->
+      <div class="weather-header">
+        <div>
+          <h1 id="city-heading">New Castle, DE (Whoville Outpost)</h1>
+          <p class="status-badge">Grinch Radar: Connecting...</p>
+        </div>
+        <div id="weather-icon" class="weather-icon" aria-hidden="true">💚</div>
+      </div>
+
+      <!-- Current Temperature & Details -->
+      <div class="weather-main">
+        <span id="temp-display" class="temp-large">--°F</span>
+        <div class="weather-meta">
+          <p id="condition-text" class="condition-label">Checking the Mount Crumpit skies...</p>
+          <p id="wind-display" class="wind-label">Sleigh Wind: -- mph</p>
+        </div>
+      </div>
+
+      <!-- 6-Hour Forecast Cards -->
+      <div class="hourly-section">
+        <h2 class="section-subtitle">Next 6 Hours Before Christmas</h2>
+        <div id="hourly-grid" class="hourly-grid" aria-live="polite"></div>
+      </div>
+
+      <!-- Keyboard-Accessible Interactive Controls -->
+      <div class="weather-controls">
+        <button type="button" id="unit-toggle-btn" aria-pressed="false">Switch to °C</button>
+        <button type="button" id="toggle-json-btn" aria-expanded="false" aria-controls="json-output">
+          Show Secret Grinch Data (JSON)
+        </button>
+        <button type="button" id="refresh-weather-btn">Refresh Radar</button>
+      </div>
+
+      <!-- Weather Effect Preview Selector -->
+      <div class="demo-bar">
+        <label for="weather-preview-select">Test Mount Crumpit Weather:</label>
+        <select id="weather-preview-select">
+          <option value="live">Live Radar Weather</option>
+          <option value="snow">Whoville Snowstorm (Snowflakes)</option>
+          <option value="rain">Slushy Grinch Rain (Rain Drops)</option>
+          <option value="thunderstorm">Mount Crumpit Thunder (Heavy Rain)</option>
+          <option value="cloudy">Gloomy Cave Clouds</option>
+          <option value="clear">Heart Grew 3 Sizes (Sunny)</option>
+        </select>
+      </div>
+
+      <!-- Collapsible Raw JSON Output -->
+      <pre id="json-output" class="json-box" hidden></pre>
+    </section>
+
+    <!-- ACCESSIBLE FORM VALIDATION (30 pts on Rubric) -->
+    <section class="form-card" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">🎄 Whoville Sleigh &amp; Weather Alert Signup</h2>
+      <p class="form-intro">Sign up so Max the Dog can warn you if the Grinch—or a blizzard—is headed down the mountain!</p>
+
+      <form id="contact-form" novalidate>
+        <div class="form-group">
+          <label for="name">Who Name <span aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" placeholder="e.g., Cindy Lou Who" required aria-describedby="name-error" />
+          <span id="name-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Whoville Email <span aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" placeholder="e.g., cindy@whoville.org" required aria-describedby="email-error" />
+          <span id="email-error" class="error-message" role="alert"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Holiday Weather Report or Note to the Grinch <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="3" placeholder="Tell us if it's snowing in Whoville..." required aria-describedby="message-error"></textarea>
+          <span id="message-error" class="error-message" role="alert"></span>
+        </div>
+
+        <button type="submit">Send Sleigh Alert</button>
+        <p id="form-feedback" class="success-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+</body>
+</html>
